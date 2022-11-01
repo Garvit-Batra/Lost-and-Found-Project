@@ -1,0 +1,26 @@
+<%- include ("partials/header") -%>
+<nav class="navbar">
+    <div>
+        <ul class="navlist">
+            <li><a class="nav-link" style="font-size:larger; float: left;" href="/Dashboard">Home</a></li>
+            <li><form action="/logout" method="post"><button class="logout-btn">Logout</button></li></form>
+            <li><a class="nav-link" style="font-size:larger; float:right;" href="/AddItem">Compose</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="Heading">
+    <h1>
+        Hello <%=username %>!
+    </h1>
+</div>
+    <div class="dash-link">
+        <form action="/Dashboard" method="get" class="form1">
+                <input type="hidden" name="val" value="Lost">
+                <a class="dash-link-inside" href="/Dashboard/Lost">Lost Items</a>
+        </form>
+        <form action="/Dashboard" method="get" class="form2">
+                <input type="hidden" name="val" value="Found">
+                <a class="dash-link-inside" href="/Dashboard/Found">Found Items</a>
+        </form> 
+    </div>
+<%- include ("partials/footer") -%>

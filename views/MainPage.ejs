@@ -1,0 +1,23 @@
+<%- include("partials/header") -%>
+<nav class="navbar">
+    <div>
+        <ul class="navlist">
+            <li><a class="nav-link" style="font-size:larger; float: left;" href="/Dashboard">Home</a></li>
+            <li><form action="/logout" method="post"><button class="logout-btn">Logout</button></li></form>
+            <li><a class="nav-link" style="font-size:larger; float:right;" href="/AddItem">Compose</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="item">
+    <% items.forEach(function(element){ %>
+        <div class="item-inside">
+            <% if (element.title.length > 20) { %>
+            <a href="/article/<%=element._id%>"><h2 class="item-title"><%= element.title.substring(0,20) + " ..." %></h2></a>
+        <% }else { %>
+            <a href="/article/<%=element._id%>"><h2 class="item-title"><%= element.title%></h2></a>
+        <% } %>
+            <p class="item-date"><%= element.date %> <%= element.time %> </p> <br>   
+        </div>
+    <% }) %>
+</div>
+<%- include("partials/footer") -%>

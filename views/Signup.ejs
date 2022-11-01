@@ -1,0 +1,42 @@
+<%- include ("partials/header") -%>
+<div>
+    <h1 class="Heading"><%= Heading %></h1>
+</div>
+
+<div class="form">
+<form action="/Signup" method="post">
+    <% if(Heading === "Register"){ %>
+        <input name="user" class="inputClass" type="text" placeholder="Name" autocomplete="off" required> <br>
+    <%}%>
+        <input name="email" class="inputClass" type="text" placeholder="Email" autocomplete="off" autocapitalize="off" required> <br>
+        <input name="password" class="inputClass" type="password" placeholder="Password" autocomplete="off" required><br>
+        <%if(Heading === "Register"){%>
+            <input name="type" type="hidden" value="Register">
+        <%}else{%>
+            <input name="type" type="hidden" value="Login">
+        <%}%>
+            <button class="btn" type="submit"><%= Heading %></button>
+</form>
+</div>
+
+<% if(Heading === "Login"){  %>
+<div class="form">
+    <form action="/Signup" method="get">
+        <p>Don't have an account?</p>
+        <input type="hidden" name="val" value="Register">
+        <button class="btn">Register</button>    
+    </form>
+</div>
+<%}%>
+
+<% if(Heading === "Register"){  %>
+    <div class="form">
+        <form action="/Signup" method="get">
+            <p>Already have an account?</p>
+            <input type="hidden" name="val" value="Login">
+            <button class="btn">Login</button>    
+        </form>
+    </div>
+    <%}%>
+
+<%- include ("partials/footer") -%>

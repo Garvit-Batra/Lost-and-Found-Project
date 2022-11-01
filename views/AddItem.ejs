@@ -1,0 +1,26 @@
+<%- include ("partials/header") -%>
+<script>
+    function checkedOnClick1(){
+        document.getElementById("myCheck2").checked=false;
+    }
+    function checkedOnClick2(){
+        document.getElementById("myCheck1").checked=false;
+    }
+</script>
+<form action="/AddItem" method="post" id="input-form">
+    <h1 class="Heading">Enter the details below</h1>
+    <div class="textArea">
+        <div class="title">
+            <input id="mainTitle" name="title" class="inputClass" type="text" placeholder="Enter Title" autocomplete="off" value="" maxlength="30" required><br>
+        </div>
+        <div class="desc">
+            <textarea  id="mainDesc" name="desc" class="inputClass2" name="" id="" cols="30" rows="10" placeholder="Enter Description" value="" required></textarea><br>
+        </div>
+        <div class="check">
+            <input name="type" id="myCheck1" type="checkbox"  onclick="checkedOnClick1()" value="Lost"><label for="">Lost</label>
+            <input name="type" id="myCheck2" style="margin-left:2% ;" type="checkbox" onclick="checkedOnClick2()" value="Found"><label for="">Found</label><br>
+        </div>
+        <button class="btn">Submit</button>
+    </div>
+</form>
+<%- include ("partials/footer") -%>
