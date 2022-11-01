@@ -17,5 +17,8 @@
   "main": "server.js",
   "author": "Garvit",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "16.17.1"
+  }
 }
