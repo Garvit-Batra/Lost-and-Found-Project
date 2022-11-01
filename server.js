@@ -201,6 +201,6 @@ app.post("/logout",function(req,res){
    })
 });
 
-app.listen(3000,function(){
+app.listen(process.env.PORT,function(){
     console.log("Server started at 3000");
 });
