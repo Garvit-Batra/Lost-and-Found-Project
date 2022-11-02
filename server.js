@@ -123,10 +123,6 @@ app.post("/AddItem",function(req,res){
 
     user.findOne({email : req.session.emailID},function(err,U){
         const User = U.username;
-        console.log(req.session);
-        console.log(U);
-        console.log(U.username);
-        console.log(User);
         if(T === "Lost"){
             let itemL = new lost({
                 title : transformedTitle,
