@@ -190,6 +190,37 @@ app.post("/Signup",function(req,res){
         });
     }
 });
+
+app.get("/MyEntries",redirectLogin,function(req,res){
+    user.findOne({email:req.session.emailID},function(err,results){
+        if(results){
+            lost.find({username:results.username},function(err,result){
+                found.find({username:results.username},function(err,result2){
+                    result2.forEach(function(element){
+                        result.push(element)
+                    })
+                    res.render("PersonalEntries",{items:result});
+                })
+            })  
+        }
+    })
+})
+
+app.post("/delete",redirectLogin,function(req,res){
+    elementID = req.body.elementID;
+    elementType = req.body.elementType;
+    if(elementType=== "Lost"){
+        lost.findByIdAndDelete({_id:elementID},function(){
+        })
+        res.redirect("/MyEntries");
+    }
+    else{
+        found.findByIdAndDelete({_id:elementID},function(){
+        })
+        res.redirect("/MyEntries");
+    }
+    
+})
 app.post("/logout",function(req,res){
    req.session.destroy(function(){
     res.clearCookie("sid");

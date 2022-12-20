@@ -1,13 +1,6 @@
 <%- include ("partials/header") -%>
-<nav class="navbar">
-    <div>
-        <ul class="navlist">
-            <li><a class="nav-link" style="font-size:larger; float: left;" href="/Dashboard">Home</a></li>
-            <li><form action="/logout" method="post"><button class="logout-btn">Logout</button></li></form>
-            <li><a class="nav-link" style="font-size:larger; float:right;" href="/AddItem">Compose</a></li>
-        </ul>
-    </div>
-</nav>
+<%- include ("partials/navbar") -%>
+
 <div class="article">
     <div class="article-heading">
         <h2><%=title%></h2>
