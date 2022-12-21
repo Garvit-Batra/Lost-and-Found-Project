@@ -112,9 +112,9 @@ app.get("/article/:topic",redirectLogin,function(req,res){
 
 
 app.post("/AddItem",function(req,res){
-    var today= new Date().toLocaleDateString('en-IN', {year:"numeric", month:"short", day:"numeric"});
+    var today= new Date().toLocaleDateString('en-IN', {timeZone:'Asia/Kolkata',year:"numeric", month:"short", day:"numeric"});
     var time = new Date(); 
-    var Time = time.toLocaleString('en-IN', { hour: 'numeric', minute: 'numeric', hour12: true })
+    var Time = time.toLocaleString('en-IN', {timeZone:'Asia/Kolkata', hour: 'numeric', minute: 'numeric', hour12: true })
     const T = req.body.type;
     const Title = req.body.title;
     const Desc = req.body.desc;
