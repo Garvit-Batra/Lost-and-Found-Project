@@ -112,7 +112,7 @@ app.get("/article/:topic",redirectLogin,function(req,res){
 
 
 app.post("/AddItem",function(req,res){
-    var today= new Date().toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"});
+    var today= new Date().toLocaleDateString('en-IN', {year:"numeric", month:"short", day:"numeric"});
     var time = new Date(); 
     var Time = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
     const T = req.body.type;
