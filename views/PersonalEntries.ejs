@@ -11,7 +11,7 @@
         <% } %>
             <p class="item-date"><%= element.date %> <%= element.time %> </p>
             <form class="delete-btn" action="/delete" method="post">
-                <button class="btn" type="submit">Delete</button>
+                <button class="btn" type="submit">✖</button>
                 <input type="hidden" value="<%=element._id%>" name="elementID">
                 <input type="hidden" value="<%=element.type%>" name="elementType">
             </form>
