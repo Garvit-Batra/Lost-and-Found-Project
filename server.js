@@ -8,6 +8,8 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const saltRounds = 10;
 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -257,6 +259,6 @@ app.post("/logout", function (req, res) {
   });
 });
 
-app.listen(process.env.PORT, function () {
+app.listen(PORT, function () {
   console.log("Server started at 3000");
 });

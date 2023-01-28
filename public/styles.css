@@ -65,6 +65,10 @@ input[type="text"] {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
+input[type="email"] {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
 textarea:focus,
 input:focus {
   outline: none;
