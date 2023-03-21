@@ -72,7 +72,26 @@ const redirectDash = (req, res, next) => {
     next();
   }
 };
-
+app.get("/profile", redirectLogin, (req, res) => {
+  user.findOne({ email: req.session.emailID }, function (err, data) {
+    const name = data.username;
+    const transformedName =
+      name.substring(0, 1).toUpperCase() +
+      name.substring(1, name.length).toLowerCase();
+    if (data) {
+      lost.find({ username: data.username }, function (err, result) {
+        found.find({ username: data.username }, function (err, result2) {
+          res.render("Profile", {
+            username: transformedName,
+            itemL: result.length,
+            itemF: result2.length,
+            email: req.session.emailID,
+          });
+        });
+      });
+    }
+  });
+});
 app.get("/", redirectDash, function (req, res) {
   const { emailID } = req.session;
   res.render("Landing");
