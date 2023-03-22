@@ -1,9 +1,36 @@
 <%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
 <div class="profile">
-  <h1 style="text-align: center"><%=username %></h1>
-  <h3 style="text-align: center">Email-ID: <%=email %></h3>
-  <div class="entries">
-    <h3 style="display: inline-block">Lost Entries made: <%=itemL %></h3>
-    <h3 style="float: right">Found Entries made: <%=itemF %></h3>
+  <h1><%=username %></h1>
+  <h3>Email-ID: <%=email %></h3>
+  <h3>Lost Entries made: <%=itemL %></h3>
+  <h3>Found Entries made: <%=itemF %></h3>
+  <%if(email===sessionEmail){%>
+  <div>
+    <button class="btn btn-hover">Change Profile Picture</button>
+  </div>
+  <%}%>
+</div>
+
+<%if(email!==sessionEmail){%>
+<div class="profile">
+  <h3>Posts:</h3>
+  <div class="item">
+    <% items.forEach(function(element){ %>
+    <div class="item-inside">
+      <% if (element.title.length > 20) { %>
+      <a href="/article/<%=element._id%>"
+        ><h2 class="item-title">
+          <%= element.title.substring(0,20) + " ..." %>
+        </h2></a
+      >
+      <% }else { %>
+      <a href="/article/<%=element._id%>"
+        ><h2 class="item-title"><%= element.title%></h2></a
+      >
+      <% } %>
+      <p class="item-date"><%= element.date %> <%= element.time %></p>
+    </div>
+    <% }) %>
   </div>
 </div>
+<%}%>

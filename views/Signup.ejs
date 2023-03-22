@@ -9,7 +9,7 @@
       name="user"
       class="inputClass"
       type="text"
-      placeholder="Name"
+      placeholder="Username"
       autocomplete="off"
       required
     />
@@ -32,7 +32,8 @@
       placeholder="Password"
       autocomplete="off"
       required
-    /><br />
+    />
+    <br />
     <%if(Heading === "Register"){%>
     <input name="type" type="hidden" value="Register" />
     <%}else{%>
@@ -58,3 +59,6 @@
   </form>
 </div>
 <%}%> <%- include ("partials/footer") -%>
+<!-- 
+pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+      title="Must contain at least one  number and one uppercase and lowercase letter, and at least 5 or more characters" -->

@@ -86,6 +86,8 @@ app.get("/profile", redirectLogin, (req, res) => {
             itemL: result.length,
             itemF: result2.length,
             email: req.session.emailID,
+            sessionEmail: req.session.emailID,
+            items: [],
           });
         });
       });
@@ -147,7 +149,33 @@ app.get("/article/:topic", redirectLogin, function (req, res) {
     }
   });
 });
-
+app.get("/profile/:name", redirectLogin, function (req, res) {
+  const name = req.params.name;
+  user.findOne({ username: name }, function (err, data) {
+    if (data) {
+      if (data.email === req.session.emailID) {
+        res.redirect("/profile");
+      } else {
+        lost.find({ username: name }, function (err, result) {
+          const temp = result.length;
+          found.find({ username: name }, function (err, result2) {
+            result2.forEach(function (element) {
+              result.push(element);
+            });
+            res.render("Profile", {
+              username: name,
+              itemL: temp,
+              itemF: result2.length,
+              email: data.email,
+              sessionEmail: req.session.emailID,
+              items: result,
+            });
+          });
+        });
+      }
+    }
+  });
+});
 app.post("/AddItem", function (req, res) {
   var today = new Date().toLocaleDateString("en-IN", {
     timeZone: "Asia/Kolkata",
@@ -204,25 +232,28 @@ app.post("/AddItem", function (req, res) {
 
 app.post("/Signup", function (req, res) {
   if (req.body.type === "Register") {
-    user.findOne({ email: req.body.email }, function (err, data) {
-      if (data) {
-        res.send("Email already exists!");
-      } else {
-        bcrypt.genSalt(saltRounds, function (err, salt) {
-          bcrypt.hash(req.body.password, salt, function (err, hash) {
-            let user1 = new user({
-              username: req.body.user,
-              email: req.body.email,
-              password: hash,
-            });
-            user1.save(function () {
-              req.session.emailID = req.body.email;
-              res.redirect("/Dashboard");
+    user.findOne(
+      { $or: [{ email: req.body.email }, { username: req.body.user }] },
+      function (err, data) {
+        if (data) {
+          res.send("Email or username already exists!");
+        } else {
+          bcrypt.genSalt(saltRounds, function (err, salt) {
+            bcrypt.hash(req.body.password, salt, function (err, hash) {
+              let user1 = new user({
+                username: req.body.user,
+                email: req.body.email,
+                password: hash,
+              });
+              user1.save(function () {
+                req.session.emailID = req.body.email;
+                res.redirect("/Dashboard");
+              });
             });
           });
-        });
+        }
       }
-    });
+    );
   } else if (req.body.type === "Login") {
     user.findOne({ email: req.body.email }, function (err, results) {
       if (results) {
