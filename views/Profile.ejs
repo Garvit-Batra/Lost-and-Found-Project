@@ -76,7 +76,14 @@
     if (document.querySelector(".input").value === "") {
       button.disabled = true;
     } else {
-      button.disabled = false;
+      const fileSize = input.files.item(0).size;
+      const fileMb = fileSize / 1024 ** 2;
+      if (fileMb >= 1.55) {
+        alert("file size less than 1.5MB");
+        button.disabled = true;
+      } else {
+        button.disabled = false;
+      }
     }
   }
 </script>
