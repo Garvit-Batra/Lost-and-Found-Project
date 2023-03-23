@@ -159,7 +159,7 @@ li a {
 .item-date {
   float: right;
   margin: 1.25% 1%;
-  margin-right: 0.5%;
+  margin-right: 0.25%;
   font-size: 90%;
   font-weight: bolder;
 }
@@ -226,22 +226,22 @@ a:hover {
   background: #fff;
   border-radius: 7px;
   padding: 0.25%;
-  padding-left: 1%;
-  margin-bottom: 5%;
+  padding-left: 2%;
+  margin-bottom: 4%;
 }
 .article-content {
   font-size: large;
   box-shadow: 0 2px 5px #ccc;
   background: #fff;
   border-radius: 7px;
-  padding: 0.25%;
-  padding-left: 1%;
-  margin-bottom: 5%;
+  text-align: justify;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-bottom: 4%;
 }
 .delete-btn {
   float: left;
   margin-top: 1%;
-  margin-left: 0;
   margin-right: 0.25%;
 }
 .profile {
@@ -253,4 +253,14 @@ a:hover {
   margin-right: 5%;
   margin-top: 2%;
   overflow: hidden;
+}
+.profile-img {
+  width: 15em;
+  height: 15em;
+  float: right;
+  border-radius: 50%;
+  margin: 2% 0 2% 0;
+}
+.profile-left {
+  display: inline-block;
 }

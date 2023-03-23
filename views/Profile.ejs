@@ -1,13 +1,46 @@
 <%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
 <div class="profile">
-  <h1><%=username %></h1>
-  <h3>Email-ID: <%=email %></h3>
-  <h3>Lost Entries made: <%=itemL %></h3>
-  <h3>Found Entries made: <%=itemF %></h3>
-  <%if(email===sessionEmail){%>
-  <div>
-    <button class="btn btn-hover">Change Profile Picture</button>
+  <div class="profile-left">
+    <h1><%=username %></h1>
+    <h3>Email-ID: <%=email %></h3>
+    <h3>Lost Entries made: <%=itemL %></h3>
+    <h3>Found Entries made: <%=itemF %></h3>
+    <%if(email===sessionEmail){%>
+    <div>
+      <form action="/changepic" method="POST" enctype="multipart/form-data">
+        <input
+          type="file"
+          id="image"
+          name="image"
+          value=""
+          accept=".jpeg ,.jpg ,.png"
+          class="input"
+        />
+        <br />
+        <button
+          class="btn btn-hover button"
+          type="submit"
+          style="margin-top: 4%"
+        >
+          Change Profile Picture
+        </button>
+      </form>
+    </div>
+    <div style="margin: 4% 0 4% 0">
+      <form action="/deletepic" method="POST">
+        <button class="btn btn-hover" type="submit">
+          Remove Profile Picture
+        </button>
+      </form>
+    </div>
+    <%}%>
   </div>
+  <%if(image!==null){%>
+  <img
+    class="profile-img"
+    src="data:image/<%=image.img.contentType%>;base64,
+  <%=image.img.data.toString('base64')%>"
+  />
   <%}%>
 </div>
 
@@ -17,10 +50,10 @@
   <div class="item">
     <% items.forEach(function(element){ %>
     <div class="item-inside">
-      <% if (element.title.length > 20) { %>
+      <% if (element.title.length > 12) { %>
       <a href="/article/<%=element._id%>"
         ><h2 class="item-title">
-          <%= element.title.substring(0,20) + " ..." %>
+          <%= element.title.substring(0,10) + " ..." %>
         </h2></a
       >
       <% }else { %>
@@ -34,3 +67,16 @@
   </div>
 </div>
 <%}%>
+<script>
+  let input = document.querySelector(".input");
+  let button = document.querySelector(".button");
+  button.disabled = true;
+  input.addEventListener("change", stateHandle);
+  function stateHandle() {
+    if (document.querySelector(".input").value === "") {
+      button.disabled = true;
+    } else {
+      button.disabled = false;
+    }
+  }
+</script>

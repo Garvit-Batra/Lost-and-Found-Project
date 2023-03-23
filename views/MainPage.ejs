@@ -3,10 +3,10 @@
 <div class="item">
   <% items.forEach(function(element){ %>
   <div class="item-inside">
-    <% if (element.title.length > 15) { %>
+    <% if (element.title.length > 12) { %>
     <a href="/article/<%=element._id%>"
       ><h2 class="item-title">
-        <%= element.title.substring(0,12) + " ..." %>
+        <%= element.title.substring(0,10) + " ..." %>
       </h2></a
     >
     <% }else { %>
@@ -19,4 +19,3 @@
   </div>
   <% }) %>
 </div>
-<!-- <%- include("partials/footer") -%> -->
