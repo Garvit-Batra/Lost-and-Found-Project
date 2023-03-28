@@ -1,16 +1,15 @@
 <%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
-
 <div class="article">
-  <div class="article-heading">
-    <h2><%=title%></h2>
-  </div>
+  <div><h2><%=title%></h2></div>
   <div class="article-content">
-    <p style="padding-top: 2%; padding-bottom: 2%"><%=content%></p>
+    <p style="float: left; width: 50em; text-align: justify"><%=content%></p>
+    <img
+      style="float: right; width: 25em; height: 25em"
+      src="data:image/<%=image.img1.contentType%>;base64,<%=image.img1.data.toString('base64')%>"
+    />
   </div>
-  <div class="article-content">
-    <p style="padding-top: 2%">Uploaded By:</p>
-    <div style="padding-bottom: 2%">
-      <a href="/profile/<%=owner%>"><%=owner %></a>
-    </div>
+  <div style="clear: both; font-weight: bolder">
+    <a href="/profile/<%=owner%>"><%=owner %></a>
+    <p><%=time%> <%=date%></p>
   </div>
 </div>

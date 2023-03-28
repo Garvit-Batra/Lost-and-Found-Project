@@ -4,10 +4,25 @@ const redirectLogin = require("./redirectLogin");
 const user = require("../models/User");
 const lost = require("../models/Lost");
 const found = require("../models/Found");
+var fs = require("fs");
+var path = require("path");
+const multer = require("multer");
+const fsExtra = require("fs-extra");
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "routes/compose");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + "-" + Date.now());
+  },
+});
+var upload = multer({ storage: storage });
+
 router.get("/AddItem", redirectLogin, function (req, res) {
   res.render("AddItem");
 });
-router.post("/AddItem", function (req, res) {
+router.post("/AddItem", upload.single("image1"), function (req, res) {
   var today = new Date().toLocaleDateString("en-IN", {
     timeZone: "Asia/Kolkata",
     year: "numeric",
@@ -41,8 +56,17 @@ router.post("/AddItem", function (req, res) {
         date: today,
         time: Time,
         username: User,
+        email: req.session.emailID,
+        name: req.body.name,
+        img1: {
+          data: fs.readFileSync(
+            path.join(__dirname + "/compose/" + req.file.filename)
+          ),
+          contentType: "image/png",
+        },
       });
       itemL.save(function () {
+        fsExtra.emptyDirSync("compose");
         res.redirect("/Dashboard/" + T);
       });
     } else if (T === "Found") {
@@ -53,8 +77,17 @@ router.post("/AddItem", function (req, res) {
         date: today,
         time: Time,
         username: User,
+        email: req.session.emailID,
+        name: req.body.name,
+        img1: {
+          data: fs.readFileSync(
+            path.join(__dirname + "/compose/" + req.file.filename)
+          ),
+          contentType: "image/png",
+        },
       });
       itemF.save(function () {
+        fsExtra.emptyDirSync("compose");
         res.redirect("/Dashboard/" + T);
       });
     }

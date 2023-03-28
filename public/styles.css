@@ -83,7 +83,8 @@ input::placeholder {
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
 }
-.btn {
+.btn,
+input::file-selector-button {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5px;
@@ -95,7 +96,9 @@ input::placeholder {
   text-decoration: none;
   border: none;
 }
-
+input::file-selector-button:hover {
+  background: #c0a891;
+}
 .btn:hover {
   background: #c0a891;
   text-decoration: none;
@@ -129,6 +132,7 @@ li a {
   margin-bottom: 3%;
   font-family: "Montserrat", sans-serif;
   font-weight: bolder;
+  clear: both;
 }
 .inputClass2 {
   margin-bottom: 4px;
@@ -213,31 +217,18 @@ a:hover {
   box-shadow: 0 2px 5px #ccc;
 }
 .article {
-  margin-top: 3%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 3%;
-  font-family: "Montserrat", sans-serif;
-  color: #404040;
-  font-weight: bolder;
-}
-.article-heading {
-  box-shadow: 0 2px 5px #ccc;
+  align-items: center;
+  overflow: hidden;
+  margin: 3%;
+  padding: 2%;
   background: #fff;
   border-radius: 7px;
-  padding: 0.25%;
-  padding-left: 2%;
-  margin-bottom: 4%;
 }
-.article-content {
-  font-size: large;
-  box-shadow: 0 2px 5px #ccc;
-  background: #fff;
-  border-radius: 7px;
-  text-align: justify;
-  padding-left: 2%;
-  padding-right: 2%;
-  margin-bottom: 4%;
+.additem {
+  align-items: center;
+  overflow: hidden;
+  margin: 3%;
+  padding: 2%;
 }
 .delete-btn {
   float: left;
@@ -263,4 +254,14 @@ a:hover {
 }
 .profile-left {
   display: inline-block;
+}
+content-pic {
+  width: 1px;
+  /* float: right; */
+  /* margin: 2% 0 2% 0; */
+}
+.icon {
+  margin-right: 1%;
+  margin-left: 1%;
+  font-size: larger;
 }

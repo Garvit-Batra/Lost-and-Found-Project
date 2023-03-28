@@ -6,5 +6,11 @@ const lostAndFoundSchema = new mongoose.Schema({
   date: String,
   time: String,
   username: String,
+  email: String,
+  name: String,
+  img1: {
+    data: Buffer,
+    contentType: String,
+  },
 });
 module.exports = mongoose.model("found", lostAndFoundSchema);

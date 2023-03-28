@@ -1,6 +1,7 @@
 <%- include("partials/header") -%> <%- include ("partials/navbar") -%>
 
 <div class="item">
+  <h2 style="text-align: center"><%=Heading%> Entries</h2>
   <% items.forEach(function(element){ %>
   <div class="item-inside">
     <% if (element.title.length > 12) { %>
