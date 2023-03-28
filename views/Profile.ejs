@@ -8,6 +8,7 @@
     <%if(email===sessionEmail){%>
     <div>
       <form action="/changepic" method="POST" enctype="multipart/form-data">
+        <%if(image===null){%>
         <input
           type="file"
           id="image"
@@ -24,6 +25,7 @@
         >
           Change Profile Picture
         </button>
+        <%}%>
       </form>
     </div>
     <div style="margin: 4% 0 4% 0">
