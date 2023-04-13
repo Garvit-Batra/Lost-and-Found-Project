@@ -1,19 +1,14 @@
 <%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
-
-<div class="Heading">
+<div class="container">
   <h1>Hello <%=username %>!</h1>
-</div>
-<div class="dash-link" style="text-align: center">
-  <form action="/Dashboard" method="get" style="margin-bottom: 6%">
-    <input type="hidden" name="val" value="Lost" />
-    <a class="dash-link-inside" href="/Dashboard/Lost" style="color: white"
-      >Lost Items</a
-    >
-  </form>
-  <form action="/Dashboard" method="get">
-    <input type="hidden" name="val" value="Found" />
-    <a class="dash-link-inside" href="/Dashboard/Found" style="color: white"
-      >Found Items</a
-    >
-  </form>
+  <div class="mt-3">
+    <form action="/Dashboard" method="get" class="mt-3">
+      <input type="hidden" name="val" value="Lost" />
+      <a href="/Dashboard/Lost">Lost Items Inventory</a>
+    </form>
+    <form action="/Dashboard" method="get" class="mt-3">
+      <input type="hidden" name="val" value="Found" />
+      <a href="/Dashboard/Found">Found Items Inventory</a>
+    </form>
+  </div>
 </div>

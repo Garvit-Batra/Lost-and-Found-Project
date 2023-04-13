@@ -1,26 +1,22 @@
 <%- include("partials/header") -%> <%- include ("partials/navbar") -%>
+<div class="container-m">
+  <div class="entries">
+    <% items.forEach(function(element){ %>
+    <div class="entry my-2">
+      <form class="delete-btn" action="/delete" method="post">
+        <button class="btn" type="submit"><i class="fa fa-remove"></i></button>
+        <input type="hidden" value="<%=element._id%>" name="elementID" />
+        <input type="hidden" value="<%=element.type%>" name="elementType" />
+      </form>
+      <a href="/article/<%=element._id%>"
+        ><p style="text-align: left"><%= element.title%></p></a
+      >
+      <p class="ms-auto" style="text-align: right">
+        <%= element.date %> <%= element.time %>
+      </p>
 
-<div class="item">
-  <% items.forEach(function(element){ %>
-  <div class="item-inside">
-    <% if (element.title.length > 12) { %>
-    <a href="/article/<%=element._id%>"
-      ><h2 class="item-title">
-        <%= element.title.substring(0,10) + " ..." %>
-      </h2></a
-    >
-    <% }else { %>
-    <a href="/article/<%=element._id%>"
-      ><h2 class="item-title"><%= element.title%></h2></a
-    >
-    <% } %>
-    <p class="item-date"><%= element.date %> <%= element.time %></p>
-    <form class="delete-btn" action="/delete" method="post">
-      <button class="btn" type="submit"><i class="fa fa-remove"></i></button>
-      <input type="hidden" value="<%=element._id%>" name="elementID" />
-      <input type="hidden" value="<%=element.type%>" name="elementType" />
-    </form>
-    <br />
+      <br />
+    </div>
+    <% }) %>
   </div>
-  <% }) %>
 </div>

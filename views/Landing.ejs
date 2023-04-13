@@ -1,4 +1,21 @@
-<%- include ("partials/header") -%>
+<%- include ("partials/header") -%> <%- include ("partials/navbar-outside") -%>
+<div class="container">
+  <h1 class="landing-heading">Welcome To Lost and Found!</h1>
+  <div>
+    <img class="landing-img" src="/LoginImage.png" alt="LoginImage" />
+  </div>
+  <form action="/Signup" method="get">
+    <input type="hidden" name="val" value="Login" />
+    <button class="btn mb-4">Login</button>
+  </form>
+  <form action="/Signup" method="get">
+    <input type="hidden" name="val" value="Register" />
+    <button class="btn">Register</button>
+  </form>
+</div>
+<%- include ("partials/footer") -%>
+
+<!-- <%- include ("partials/header") -%>
 <div class="landing" style="margin-right: 1.5%">
   <h1 class="Heading">Welcome To Lost and Found!</h1>
   <img
@@ -18,4 +35,4 @@
     </button>
   </form>
 </div>
-<%- include ("partials/footer") -%>
+<%- include ("partials/footer") -%> -->

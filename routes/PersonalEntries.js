@@ -3,7 +3,7 @@ const router = express.Router();
 const user = require("../models/User");
 const lost = require("../models/Lost");
 const found = require("../models/Found");
-const redirectLogin = require("./redirectLogin");
+const redirectLogin = require("./redirects/redirectLogin");
 
 router.get("/MyEntries", redirectLogin, function (req, res) {
   user.findOne({ email: req.session.emailID }, function (err, results) {

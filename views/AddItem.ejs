@@ -7,75 +7,76 @@
     document.getElementById("myCheck1").checked = false;
   }
 </script>
-<form
-  action="/AddItem"
-  method="post"
-  id="input-form"
-  enctype="multipart/form-data"
->
-  <h1 style="text-align: center">Enter the details below</h1>
-  <div class="additem">
+<div class="container" style="text-align: left">
+  <form
+    action="/AddItem"
+    method="post"
+    id="input-form"
+    enctype="multipart/form-data"
+    style="width: 100%"
+  >
+    <h1 style="text-align: center">Enter the details below</h1>
     <div>
-      <input
-        id="mainTitle"
-        name="title"
-        class="inputClass"
-        type="text"
-        placeholder="Enter Title"
-        autocomplete="off"
-        value=""
-        maxlength="20"
-        required
-        style="margin: 1%"
-      />
-    </div>
-    <div>
-      <textarea
-        id="mainDesc"
-        name="desc"
-        class="inputClass2"
-        name=""
-        id=""
-        cols="40"
-        rows="10"
-        placeholder="Enter Description"
-        value=""
-        required
-        style="float: left; margin: 1%"
-      ></textarea>
-      <input
-        type="file"
-        id="image"
-        name="image1"
-        value=""
-        accept=".jpeg ,.jpg ,.png"
-        class="input"
-        style="float: right; margin: 1%"
-      />
-    </div>
-    <div style="clear: both; font-weight: bolder; margin: 1%">
-      <input
-        name="type"
-        id="myCheck1"
-        type="checkbox"
-        onclick="checkedOnClick1()"
-        value="Lost"
-      /><label for="">Lost</label>
-      <input
-        name="type"
-        id="myCheck2"
-        style="margin-left: 2%"
-        type="checkbox"
-        onclick="checkedOnClick2()"
-        value="Found"
-      /><label for="">Found</label><br />
+      <div>
+        <input
+          id="mainTitle"
+          name="title"
+          class="input-class my-2"
+          type="text"
+          placeholder="Enter Title"
+          autocomplete="off"
+          value=""
+          maxlength="20"
+          required
+        />
+      </div>
+      <div>
+        <textarea
+          id="mainDesc"
+          name="desc"
+          class="input-class my-2"
+          name=""
+          id=""
+          cols="40"
+          rows="10"
+          placeholder="Enter Description"
+          value=""
+          required
+        ></textarea>
+        <br />
+        <div class="mb-3">
+          <input
+            name="image1"
+            value=""
+            accept=".jpeg ,.jpg ,.png"
+            class="form-control input"
+            type="file"
+            id="formFile"
+          />
+        </div>
+      </div>
+      <div class="my-2">
+        <input
+          name="type"
+          id="myCheck1"
+          type="checkbox"
+          onclick="checkedOnClick1()"
+          value="Lost"
+        /><label for="">Lost</label>
+        <input
+          name="type"
+          id="myCheck2"
+          type="checkbox"
+          onclick="checkedOnClick2()"
+          value="Found"
+          class="mx-3"
+        /><label for="">Found</label><br />
 
-      <button class="btn button" type="submit" style="margin-top: 1%">
-        Submit
-      </button>
+        <button class="btn mt-2 button" type="submit">Submit</button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>
 <script>
   let input = document.querySelector(".input");
   let button = document.querySelector(".button");
@@ -87,8 +88,8 @@
     } else {
       const fileSize = input.files.item(0).size;
       const fileMb = fileSize / 1024 ** 2;
-      if (fileMb >= 1.55) {
-        alert("file size less than 1.5MB");
+      if (fileMb >= 1.01) {
+        alert("file size less than 1MB");
         button.disabled = true;
       } else {
         button.disabled = false;

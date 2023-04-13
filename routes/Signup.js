@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const redirectDash = require("./redirectDash");
+const redirectDash = require("./redirects/redirectDash");
 const user = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -26,6 +26,7 @@ router.post("/Signup", function (req, res) {
               });
               user1.save(function () {
                 req.session.emailID = req.body.email;
+                req.session.username = req.body.username;
                 res.redirect("/Dashboard");
               });
             });
@@ -42,6 +43,7 @@ router.post("/Signup", function (req, res) {
           function (err, result) {
             if (result) {
               req.session.emailID = req.body.email;
+              req.session.username = results.username;
               res.redirect("/Dashboard");
             } else {
               res.send("Error in email or password");

@@ -1,4 +1,45 @@
-<nav class="navbar">
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-5 shadow mb-5 bg-white">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-2" href="/"><i class="fa fa-home fa-lg"></i></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-3">
+          <a class="nav-link active" aria-current="page" href="/AddItem"
+            ><i class="fa fa-pencil-square-o fa-lg"></i
+          ></a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link active" aria-current="page" href="MyEntries"
+            ><i class="fa fa-history fa-lg"></i
+          ></a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link active" aria-current="page" href="/profile"
+            ><i class="fa fa-user-circle-o fa-lg"></i
+          ></a>
+        </li>
+        <li class="nav-item mx-3">
+          <form action="/logout" method="post">
+            <button class="btn">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar">
     <div>
         <ul class="navlist">
             <li><a class="nav-link" style="float: left; margin-left: 1%;font-size: larger;" href="/Dashboard">  <i class="fa fa-home"></i></a></li>
@@ -8,5 +49,4 @@
             <li><a class="nav-link icon" style=" float:right;" href="/profile"><i class="fa fa-user-circle-o"></i></a></li>
         </ul>
     </div>
-</nav>
-
+</nav> -->

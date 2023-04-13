@@ -4,7 +4,7 @@ const user = require("../models/User");
 const lost = require("../models/Lost");
 const found = require("../models/Found");
 const img = require("../models/Img");
-const redirectLogin = require("./redirectLogin");
+const redirectLogin = require("./redirects/redirectLogin");
 
 router.get("/profile", redirectLogin, (req, res) => {
   user.findOne({ email: req.session.emailID }, function (err, data) {

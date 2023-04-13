@@ -57,6 +57,9 @@ app.get("/Dashboard/:topic", require("./routes/Dashboard"));
 app.get("/article/:topic", require("./routes/Article"));
 app.get("/profile/:name", require("./routes/Profile"));
 app.get("/MyEntries", require("./routes/PersonalEntries"));
+app.get("/about", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
 
 app.post("/AddItem", require("./routes/Additem"));
 app.post("/Signup", require("./routes/Signup"));

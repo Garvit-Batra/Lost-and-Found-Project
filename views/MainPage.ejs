@@ -1,22 +1,17 @@
 <%- include("partials/header") -%> <%- include ("partials/navbar") -%>
-
-<div class="item">
-  <h2 style="text-align: center"><%=Heading%> Entries</h2>
-  <% items.forEach(function(element){ %>
-  <div class="item-inside">
-    <% if (element.title.length > 12) { %>
-    <a href="/article/<%=element._id%>"
-      ><h2 class="item-title">
-        <%= element.title.substring(0,10) + " ..." %>
-      </h2></a
-    >
-    <% }else { %>
-    <a href="/article/<%=element._id%>"
-      ><h2 class="item-title"><%= element.title%></h2></a
-    >
-    <% } %>
-    <p class="item-date"><%= element.date %> <%= element.time %></p>
-    <br />
+<div class="container-m">
+  <h2><%=Heading%> Entries</h2>
+  <div class="entries">
+    <% items.forEach(function(element){ %>
+    <div class="entry my-2">
+      <a href="/article/<%=element._id%>"
+        ><p style="text-align: left"><%= element.title%></p></a
+      >
+      <p class="ms-auto" style="text-align: right">
+        <%= element.date %> <%= element.time %>
+      </p>
+      <br />
+    </div>
+    <% }) %>
   </div>
-  <% }) %>
 </div>

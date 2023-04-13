@@ -1,71 +1,94 @@
 <%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
-<div class="profile">
-  <div class="profile-left">
-    <h1><%=username %></h1>
-    <h3>Email-ID: <%=email %></h3>
-    <h3>Lost Entries made: <%=itemL %></h3>
-    <h3>Found Entries made: <%=itemF %></h3>
-    <%if(email===sessionEmail){%>
-    <div>
-      <form action="/changepic" method="POST" enctype="multipart/form-data">
-        <%if(image===null){%>
-        <input
-          type="file"
-          id="image"
-          name="image"
-          value=""
-          accept=".jpeg ,.jpg ,.png"
-          class="input"
-        />
-        <br />
-        <button
-          class="btn btn-hover button"
-          type="submit"
-          style="margin-top: 4%"
-        >
-          Change Profile Picture
-        </button>
-        <%}%>
-      </form>
-    </div>
-    <div style="margin: 4% 0 4% 0">
-      <form action="/deletepic" method="POST">
-        <button class="btn btn-hover" type="submit">
-          Remove Profile Picture
-        </button>
-      </form>
-    </div>
+<!-- <div class="container">
+  <div>
+    <%if(image!==null){%>
+    <img
+      class="profile-img"
+      src="data:image/<%=image.img.contentType%>;base64,
+      <%=image.img.data.toString('base64')%>"
+    />
+    <%}%> <%if(image===null){%>
+    <img class="profile-img" src="/LoginImage.png" />
     <%}%>
   </div>
-  <%if(image!==null){%>
-  <img
-    class="profile-img"
-    src="data:image/<%=image.img.contentType%>;base64,
-  <%=image.img.data.toString('base64')%>"
-  />
-  <%}%> <%if(image===null){%>
-  <img class="profile-img" src="/LoginImage.png" />
-  <%}%>
-</div>
+  <h1><%=username %></h1>
+  <h3>Email-ID: <%=email %></h3>
+  <h3>Lost Entries made: <%=itemL %></h3>
+  <h3>Found Entries made: <%=itemF %></h3>
 
+  <%if(email===sessionEmail){%>
+  <form action="/changepic" method="POST" enctype="multipart/form-data">
+    <%if(image===null){%>
+    <div class="container-p">
+      <input
+        type="file"
+        id="image"
+        name="image"
+        value=""
+        accept=".jpeg ,.jpg ,.png"
+      />
+      <br />
+      <button class="btn" type="submit">Change Profile Picture</button>
+    </div>
+    <%}else{%>
+  </form>
+  <form action="/deletepic" method="POST">
+    <button class="btn" type="submit">Remove Profile Picture</button>
+  </form>
+  <%}%> <%}%>
+</div> -->
+
+<div class="container">
+  <div>
+    <%if(image!==null){%>
+    <img
+      class="profile-img"
+      src="data:image/<%=image.img.contentType%>;base64,
+      <%=image.img.data.toString('base64')%>"
+    />
+    <%}%> <%if(image===null){%>
+    <img class="profile-img" src="/LoginImage.png" />
+    <%}%>
+  </div>
+  <h1><%=username %></h1>
+  <h3>Email-ID: <%=email %></h3>
+  <h3>Lost Entries made: <%=itemL %></h3>
+  <h3>Found Entries made: <%=itemF %></h3>
+  <%if(email===sessionEmail){%>
+  <div class="container-p">
+    <form action="/changepic" method="POST" enctype="multipart/form-data">
+      <%if(image===null){%>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        value=""
+        accept=".jpeg ,.jpg ,.png"
+        class="form-control my-1 input"
+        id="formFile"
+      />
+      <button class="btn button" type="submit">Change Profile Picture</button>
+      <%}else{%>
+    </form>
+    <form action="/deletepic" method="POST">
+      <button class="btn" type="submit">Remove Profile Picture</button>
+    </form>
+  </div>
+  <%}%> <%}%>
+</div>
 <%if(email!==sessionEmail){%>
-<div class="profile">
+<div class="container-m">
   <h3>Posts:</h3>
-  <div class="item">
+  <div class="entries">
     <% items.forEach(function(element){ %>
-    <div class="item-inside">
-      <% if (element.title.length > 12) { %>
+    <div class="entry my-2">
       <a href="/article/<%=element._id%>"
-        ><h2 class="item-title">
-          <%= element.title.substring(0,10) + " ..." %>
-        </h2></a
+        ><p style="text-align: left"><%= element.title%></p></a
       >
-      <% }else { %>
-      <a href="/article/<%=element._id%>"
-        ><h2 class="item-title"><%= element.title%></h2></a
-      >
-      <% } %>
-      <p class="item-date"><%= element.date %> <%= element.time %></p>
+      <p class="ms-auto" style="text-align: right">
+        <%= element.date %> <%= element.time %>
+      </p>
+      <br />
     </div>
     <% }) %>
   </div>
@@ -82,8 +105,8 @@
     } else {
       const fileSize = input.files.item(0).size;
       const fileMb = fileSize / 1024 ** 2;
-      if (fileMb >= 1.55) {
-        alert("file size less than 1.5MB");
+      if (fileMb >= 1.01) {
+        alert("file size less than 1");
         button.disabled = true;
       } else {
         button.disabled = false;

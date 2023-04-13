@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const redirectLogin = require("./redirectLogin");
+const redirectLogin = require("./redirects/redirectLogin");
 const lost = require("../models/Lost");
 const found = require("../models/Found");
 router.get("/article/:topic", redirectLogin, function (req, res) {
