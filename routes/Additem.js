@@ -39,6 +39,10 @@ router.post("/AddItem", upload.single("image1"), function (req, res) {
   const T = req.body.type;
   const Title = req.body.title;
   const Desc = req.body.desc;
+  const Category = req.body.category;
+  const transformedCategory = 
+    Category.substring(0, 1).toUpperCase() +
+    Category.substring(1, Category.length).toLowerCase();
   const transformedTitle =
     Title.substring(0, 1).toUpperCase() +
     Title.substring(1, Title.length).toLowerCase();
@@ -64,6 +68,7 @@ router.post("/AddItem", upload.single("image1"), function (req, res) {
           ),
           contentType: "image/png",
         },
+        category:transformedCategory,
       });
       itemL.save(function () {
         fsExtra.emptyDirSync("compose");
@@ -85,6 +90,7 @@ router.post("/AddItem", upload.single("image1"), function (req, res) {
           ),
           contentType: "image/png",
         },
+        category: transformedCategory,
       });
       itemF.save(function () {
         fsExtra.emptyDirSync("compose");

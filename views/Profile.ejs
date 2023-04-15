@@ -1,43 +1,4 @@
 <%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
-<!-- <div class="container">
-  <div>
-    <%if(image!==null){%>
-    <img
-      class="profile-img"
-      src="data:image/<%=image.img.contentType%>;base64,
-      <%=image.img.data.toString('base64')%>"
-    />
-    <%}%> <%if(image===null){%>
-    <img class="profile-img" src="/LoginImage.png" />
-    <%}%>
-  </div>
-  <h1><%=username %></h1>
-  <h3>Email-ID: <%=email %></h3>
-  <h3>Lost Entries made: <%=itemL %></h3>
-  <h3>Found Entries made: <%=itemF %></h3>
-
-  <%if(email===sessionEmail){%>
-  <form action="/changepic" method="POST" enctype="multipart/form-data">
-    <%if(image===null){%>
-    <div class="container-p">
-      <input
-        type="file"
-        id="image"
-        name="image"
-        value=""
-        accept=".jpeg ,.jpg ,.png"
-      />
-      <br />
-      <button class="btn" type="submit">Change Profile Picture</button>
-    </div>
-    <%}else{%>
-  </form>
-  <form action="/deletepic" method="POST">
-    <button class="btn" type="submit">Remove Profile Picture</button>
-  </form>
-  <%}%> <%}%>
-</div> -->
-
 <div class="container">
   <div>
     <%if(image!==null){%>

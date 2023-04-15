@@ -17,11 +17,27 @@ router.get("/Dashboard/:topic", redirectLogin, function (req, res) {
   const type = req.params.topic;
   if (type === "Lost") {
     lost.find({}, function (err, results) {
-      res.render("MainPage", { Heading: type, items: results });
+      res.render("MainPage", { Heading: type, items: results,flag:0 });
     });
   } else if (type === "Found") {
     found.find({}, function (err, results) {
-      res.render("MainPage", { Heading: type, items: results });
+      res.render("MainPage", { Heading: type, items: results,flag:0 });
+    });
+  }
+});
+router.post("/Dashboard/:topic", redirectLogin, function (req, res) {
+  const type = req.params.topic;
+  const search = req.body.search;
+  const tSearch =       
+    search.substring(0, 1).toUpperCase() +
+    search.substring(1, search.length).toLowerCase();
+  if (type === "Lost") {
+    lost.find({category:tSearch}, function (err, results) {
+      res.render("MainPage", { Heading: type, items: results,flag:1 });
+    });
+  } else if (type === "Found") {
+    found.find({category: tSearch}, function (err, results) {
+      res.render("MainPage", { Heading: type, items: results , flag:1 });
     });
   }
 });

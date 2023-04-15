@@ -12,5 +12,6 @@ const lostAndFoundSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  category:String,
 });
 module.exports = mongoose.model("lost", lostAndFoundSchema);

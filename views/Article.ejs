@@ -1,12 +1,14 @@
-<%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
-
-<div class="container">
+<%- include ("partials/header") -%> 
+<%- include ("partials/navbar") -%> 
+<div class="container my-5">
   <h2><%=title%></h2>
+  <p>Category: <%=category%></p>
   <div class="container-a">
     <div>
       <p style="text-align: justify"><%=content%></p>
+
       <img
-        class="landing-img mt-3"
+        class="article-img mt-3"
         src="data:image/<%=image.img1.contentType%>;base64,<%=image.img1.data.toString('base64')%>"
       />
     </div>

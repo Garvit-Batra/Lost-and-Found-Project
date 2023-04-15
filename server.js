@@ -65,6 +65,7 @@ app.post("/AddItem", require("./routes/Additem"));
 app.post("/Signup", require("./routes/Signup"));
 app.post("/delete", require("./routes/PersonalEntries"));
 app.post("/deletepic", require("./routes/Profile"));
+app.post("/Dashboard/:topic",require("./routes/Dashboard"))
 
 app.post("/changepic", upload.single("image"), (req, res, next) => {
   img.findOne({ email: req.session.emailID }, (err, item) => {

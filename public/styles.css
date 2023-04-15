@@ -47,7 +47,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
 }
-container-a {
+.container-a {
   display: flex;
   flex-wrap: wrap;
 }
@@ -56,6 +56,22 @@ container-a {
   margin-left: auto;
   margin-right: auto;
   width: 60%;
+}
+@media only screen and (max-width: 600px){
+  .article-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 600px){
+  .article-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  }
 }
 .input-class {
   border: none;
@@ -71,7 +87,7 @@ container-a {
 }
 .entry {
   border-radius: 10px;
-  box-shadow: 0 2px 5px black;
+  box-shadow: 0 1px 5px black;
   display: flex;
   width: 100%;
   background-color: white;

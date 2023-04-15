@@ -14,6 +14,7 @@ router.get("/article/:topic", redirectLogin, function (req, res) {
         image: result,
         date: result.date,
         time: result.time,
+        category:result.category,
       });
     }
   });
@@ -26,6 +27,7 @@ router.get("/article/:topic", redirectLogin, function (req, res) {
         image: result,
         date: result.date,
         time: result.time,
+        category:result.category,
       });
     }
   });
