@@ -1,5 +1,4 @@
-<%- include ("partials/header") -%> 
-<%- include ("partials/navbar") -%> 
+<%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
 <div class="container my-5">
   <h2><%=title%></h2>
   <p>Category: <%=category%></p>
@@ -13,7 +12,16 @@
       />
     </div>
   </div>
-  <div class="mt-3">
+  <div class="mt-5">
+    <% if (image1==null) { -%>
+    <img class="owner-img" src="/LoginImage.png" />
+    <% } else { -%>
+    <img
+      class="owner-img"
+      src="data:image1/<%=image1.img.contentType%>;base64,
+        <%=image1.img.data.toString('base64')%>"
+    />
+    <% } -%>
     <a href="/profile/<%=owner%>"><%=owner %></a>
     <p><%=time%> <%=date%></p>
   </div>

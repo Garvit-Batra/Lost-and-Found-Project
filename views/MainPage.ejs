@@ -1,17 +1,28 @@
 <%- include("partials/header") -%> <%- include ("partials/navbar") -%>
 <div class="container-m">
   <h2><%=Heading%> Entries</h2>
-      <% if (flag==0) { -%>
-      <form action="/Dashboard/<%=Heading%>" method="post" class="form-inline my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search categories" aria-label="Search" name="search">
-        <button class="btn button my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      <% } else { -%>
-      <form action="/Dashboard/<%=Heading%>" method="get">
-        <button class="btn button my-2" type="submit">Clear search</button>
-      </form>
-      <% } -%>
-    
+  <% if (flag==0) { -%>
+  <form
+    action="/Dashboard/<%=Heading%>"
+    method="post"
+    class="form-inline my-lg-0"
+  >
+    <input
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Search categories"
+      aria-label="Search"
+      name="search"
+      autocomplete="off"
+    />
+    <button class="btn button my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <% } else { -%>
+  <form action="/Dashboard/<%=Heading%>" method="get">
+    <button class="btn button my-2" type="submit">Clear search</button>
+  </form>
+  <% } -%>
+
   <div class="entries">
     <% items.forEach(function(element){ %>
     <div class="entry my-2">
