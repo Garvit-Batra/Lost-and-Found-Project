@@ -60,12 +60,15 @@ app.get("/MyEntries", require("./routes/PersonalEntries"));
 app.get("/about", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
+app.get("/chats", require("./routes/Chat"));
+app.get("/message/:receiver", require("./routes/Message"));
 
 app.post("/AddItem", require("./routes/Additem"));
 app.post("/Signup", require("./routes/Signup"));
 app.post("/delete", require("./routes/PersonalEntries"));
 app.post("/deletepic", require("./routes/Profile"));
-app.post("/Dashboard/:topic",require("./routes/Dashboard"))
+app.post("/Dashboard/:topic", require("./routes/Dashboard"));
+app.post("/message/:receiver", require("./routes/Message"));
 
 app.post("/changepic", upload.single("image"), (req, res, next) => {
   img.findOne({ email: req.session.emailID }, (err, item) => {
@@ -73,7 +76,7 @@ app.post("/changepic", upload.single("image"), (req, res, next) => {
       fsExtra.emptyDirSync("uploads");
     } else if (req.file.filename) {
       let obj = new img({
-        name: req.body.name,
+        name: req.session.username,
         email: req.session.emailID,
         img: {
           data: fs.readFileSync(

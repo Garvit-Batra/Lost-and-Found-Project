@@ -35,7 +35,14 @@
       <button class="btn" type="submit">Remove Profile Picture</button>
     </form>
   </div>
-  <%}%> <%}%>
+  <%}%> <%}%> <%if(email!==sessionEmail){%>
+  <a
+    class="nav-link active mt-2"
+    aria-current="page"
+    href="/message/<%=username%>"
+    >Message <i class="fa fa-send"></i
+  ></a>
+  <%}%>
 </div>
 <%if(email!==sessionEmail){%>
 <div class="container-m">

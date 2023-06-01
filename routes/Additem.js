@@ -40,7 +40,7 @@ router.post("/AddItem", upload.single("image1"), function (req, res) {
   const Title = req.body.title;
   const Desc = req.body.desc;
   const Category = req.body.category;
-  const transformedCategory = 
+  const transformedCategory =
     Category.substring(0, 1).toUpperCase() +
     Category.substring(1, Category.length).toLowerCase();
   const transformedTitle =
@@ -68,10 +68,10 @@ router.post("/AddItem", upload.single("image1"), function (req, res) {
           ),
           contentType: "image/png",
         },
-        category:transformedCategory,
+        category: transformedCategory,
       });
       itemL.save(function () {
-        fsExtra.emptyDirSync("compose");
+        fsExtra.emptyDirSync(__dirname + "/compose");
         res.redirect("/Dashboard/" + T);
       });
     } else if (T === "Found") {

@@ -1,0 +1,40 @@
+<%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
+<div>
+  <div class="">
+    <%if(image!==null){%>
+    <img
+      class="owner-img"
+      src="data:image/<%=image.img.contentType%>;base64,
+          <%=image.img.data.toString('base64')%>"
+    />
+    <%}%> <%if(image===null){%>
+    <img class="owner-img" src="/LoginImage.png" />
+    <%}%>
+    <h1><a href="/profile/<%=receiver%>"> <%=receiver%></a></h1>
+  </div>
+  <div class="all mb-5 mt-2">
+    <% msgs.forEach(function(msg){%>
+    <div class="msg">
+      <p class="part-1"><%=msg.sender%></p>
+      <p class="part-2"><%=msg.message%></p>
+      <p class="part-3"><%=msg.date%>&ensp;<%=msg.time%></p>
+    </div>
+    <% })%>
+  </div>
+  <form action="/message/<%=receiver%>" method="post">
+    <div class="container-message mt-5">
+      <input
+        name="message"
+        class="message"
+        type="text"
+        placeholder="Type your message"
+        autocomplete="off"
+        value=""
+        required
+      />
+      <button class="btn button">
+        <i class="fa fa-send fa-lg"></i>
+      </button>
+    </div>
+  </form>
+</div>
