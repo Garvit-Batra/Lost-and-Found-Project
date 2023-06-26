@@ -114,35 +114,67 @@ a:hover {
   width: 3em;
   border-radius: 50%;
 }
-.message {
-  border-radius: 10px;
-  box-shadow: 0 1px 5px black;
-  background-color: white;
-  padding: 0.5%;
-  border: none;
-  width: 90%;
-}
-.msg {
-  border-radius: 10px;
-  box-shadow: 0 1px 5px black;
-  background-color: white;
-  width: 80%;
-  margin: auto;
-}
-.container-message {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-  bottom: 0;
-  position: fixed;
-  margin: 2% 0 2% 0;
-}
 .part-1,
 .part-3 {
   font-weight: bolder;
   color: rgb(65, 65, 65);
 }
+.part-1-sender {
+  text-align: right;
+}
+.part-1-receiver {
+  text-align: left;
+}
 .search {
   box-shadow: 0 1px 5px black;
+}
+.contain {
+  margin: auto;
+  height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 2%;
+  width: 80%;
+}
+@media only screen and (max-width: 450px) {
+  .sms {
+    border-radius: 10px;
+    box-shadow: 0 1px 5px black;
+    background-color: white;
+    width: 95%;
+    padding: 1%;
+    margin: 1%;
+  }
+}
+@media only screen and (min-width: 450px) {
+  .sms {
+    border-radius: 10px;
+    box-shadow: 0 1px 5px black;
+    background-color: white;
+    width: 47.5%;
+    padding: 1%;
+    margin: 1%;
+  }
+}
+.left {
+  float: left;
+  clear: both;
+}
+.right {
+  float: right;
+  clear: both;
+}
+#send-container {
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 90%;
+  margin-bottom: 1%;
+}
+#msgInp {
+  width: 90%;
+  height: 35px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px black;
+  background-color: white;
+  border: none;
 }

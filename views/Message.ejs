@@ -12,29 +12,35 @@
     <%}%>
     <h1><a href="/profile/<%=receiver%>"> <%=receiver%></a></h1>
   </div>
-  <div class="all mb-5 mt-2">
-    <% msgs.forEach(function(msg){%>
-    <div class="msg">
-      <p class="part-1"><%=msg.sender%></p>
-      <p class="part-2"><%=msg.message%></p>
-      <p class="part-3"><%=msg.date%>&ensp;<%=msg.time%></p>
+  <div class="contain">
+    <% msgs.forEach(function(msg){ if(msg.sender!==receiver){%>
+    <div class="sms right">
+      <p class="part-1 part-1-sender"><%=msg.sender%></p>
+      <p class="part-1-sender"><%=msg.message%></p>
+      <p class="part-3 part-1-sender"><%=msg.date%>&ensp;<%=msg.time%></p>
     </div>
-    <% })%>
+    <%}else{%>
+    <div class="sms left">
+      <p class="part-1 part-1-receiver"><%=msg.sender%></p>
+      <p class="part-1-receiver"><%=msg.message%></p>
+      <p class="part-3 part-1-receiver"><%=msg.date%>&ensp;<%=msg.time%></p>
+    </div>
+    <%} })%>
   </div>
-  <form action="/message/<%=receiver%>" method="post">
-    <div class="container-message mt-5">
+  <div class="send">
+    <form action="/message/<%=receiver%>" id="send-container" method="post">
       <input
-        name="message"
-        class="message"
         type="text"
+        name="message"
+        id="msgInp"
         placeholder="Type your message"
         autocomplete="off"
         value=""
         required
       />
-      <button class="btn button">
+      <button class="btn button" type="submit">
         <i class="fa fa-send fa-lg"></i>
       </button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
