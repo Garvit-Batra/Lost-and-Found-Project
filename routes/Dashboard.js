@@ -58,4 +58,14 @@ router.post("/Dashboard/:topic", redirectLogin, function (req, res) {
     );
   }
 });
+router.post("/Dashboard", redirectLogin, (req, res) => {
+  const search = req.body.search;
+  user.find(
+    { username: { $regex: ".*" + search + ".*", $options: "i" } },
+    (err, results) => {
+      res.render("Users", { data: results });
+    }
+  );
+});
+
 module.exports = router;

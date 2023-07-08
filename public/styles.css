@@ -79,6 +79,10 @@ a:hover {
   box-sizing: border-box;
   width: 100%;
 }
+.search-class {
+  border: none;
+  border-radius: 2px;
+}
 .entries {
   display: flex;
   flex-direction: column;

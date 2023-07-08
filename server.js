@@ -68,6 +68,7 @@ app.post("/Signup", require("./routes/Signup"));
 app.post("/delete", require("./routes/PersonalEntries"));
 app.post("/deletepic", require("./routes/Profile"));
 app.post("/Dashboard/:topic", require("./routes/Dashboard"));
+app.post("/Dashboard", require("./routes/Dashboard"));
 app.post("/message/:receiver", require("./routes/Message"));
 
 app.post("/changepic", upload.single("image"), (req, res, next) => {

@@ -38,9 +38,23 @@
         value=""
         required
       />
-      <button class="btn button" type="submit">
+      <button
+        class="btn button"
+        type="submit"
+        id="textsend"
+        onkeyup="success()"
+      >
         <i class="fa fa-send fa-lg"></i>
       </button>
     </form>
   </div>
 </div>
+<script>
+  function success() {
+    if (document.getElementById("textsend").value === "") {
+      document.getElementById("button").disabled = true;
+    } else {
+      document.getElementById("button").disabled = false;
+    }
+  }
+</script>

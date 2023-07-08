@@ -1,0 +1,11 @@
+<%- include("partials/header") -%> <%- include ("partials/navbar") -%>
+<div class="container-m">
+  <div class="entries">
+    <% data.forEach(function(element){ %>
+    <div class="entry my-2">
+      <a href="/profile/<%=element.username%>"><p><%= element.username%></p></a>
+      <br />
+    </div>
+    <% }) %>
+  </div>
+</div>

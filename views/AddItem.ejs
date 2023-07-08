@@ -1,10 +1,25 @@
 <%- include ("partials/header") -%> <%- include ("partials/navbar") -%>
 <script>
+  function success() {
+    if (document.getElementsByClassName("textsend").value === "") {
+      document.getElementsByClassName("button").disabled = true;
+    } else {
+      document.getElementById("button").disabled = false;
+    }
+  }
   function checkedOnClick1() {
-    document.getElementById("myCheck2").checked = false;
+    if (document.getElementById("myCheck2").checked === true) {
+      document.getElementById("myCheck2").checked = false;
+    } else {
+      document.getElementById("myCheck2").checked = true;
+    }
   }
   function checkedOnClick2() {
-    document.getElementById("myCheck1").checked = false;
+    if (document.getElementById("myCheck1").checked === true) {
+      document.getElementById("myCheck1").checked = false;
+    } else {
+      document.getElementById("myCheck1").checked = true;
+    }
   }
 </script>
 <div class="container" style="text-align: left">
@@ -21,7 +36,7 @@
         <input
           id="category"
           name="category"
-          class="input-class my-2 category"
+          class="input-class my-2 category textsend"
           type="text"
           placeholder="Enter category (only one word)"
           autocomplete="off"
@@ -34,7 +49,7 @@
         <input
           id="mainTitle"
           name="title"
-          class="input-class my-2"
+          class="input-class my-2 textsend"
           type="text"
           placeholder="Enter Title"
           autocomplete="off"
@@ -47,7 +62,7 @@
         <textarea
           id="mainDesc"
           name="desc"
-          class="input-class my-2"
+          class="input-class my-2 textsend"
           name=""
           id=""
           cols="40"
@@ -75,6 +90,7 @@
           type="checkbox"
           onclick="checkedOnClick1()"
           value="Lost"
+          checked="true"
         /><label for="">Lost</label>
         <input
           name="type"
@@ -84,8 +100,9 @@
           value="Found"
           class="mx-3"
         /><label for="">Found</label><br />
-
-        <button class="btn mt-2 button" type="submit">Submit</button>
+        <button class="btn mt-2 button" type="submit" onkeyup="success()">
+          Submit
+        </button>
       </div>
     </div>
   </form>
@@ -96,17 +113,13 @@
   button.disabled = true;
   input.addEventListener("change", stateHandle);
   function stateHandle() {
-    if (document.querySelector(".input").value === "") {
+    const fileSize = input.files.item(0).size;
+    const fileMb = fileSize / 1024 ** 2;
+    if (fileMb >= 1.01) {
+      alert("file size less than 1MB");
       button.disabled = true;
     } else {
-      const fileSize = input.files.item(0).size;
-      const fileMb = fileSize / 1024 ** 2;
-      if (fileMb >= 1.01) {
-        alert("file size less than 1MB");
-        button.disabled = true;
-      } else {
-        button.disabled = false;
-      }
+      button.disabled = false;
     }
   }
 </script>
