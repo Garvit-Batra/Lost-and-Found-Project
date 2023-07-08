@@ -41,7 +41,6 @@ router.post("/Dashboard/:topic", redirectLogin, function (req, res) {
       },
       function (err, results) {
         res.render("MainPage", { Heading: type, items: results, flag: 1 });
-        console.log(results);
       }
     );
   } else if (type === "Found") {
